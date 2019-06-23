@@ -7,11 +7,11 @@ const MsgDelegate = Root.cosmos.MsgDelegate;
 const MsgUndelegate = Root.cosmos.MsgUndelegate;
 const MsgBeginRedelegate = Root.cosmos.MsgBeginRedelegate;
 
-MsgDelegate.prototype.type = Config.cosmos.tx.delegate.prefix;
+MsgDelegate.prototype.type = Config.regen.tx.delegate.prefix;
 MsgDelegate.prototype.GetSignBytes = function () {
     let msg = {
-        delegator_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress),
-        validator_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress),
+        delegator_address: BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress),
+        validator_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress),
         amount: this.Amount
     };
     let sortMsg = Utils.sortObjectKeys(msg);
@@ -39,8 +39,8 @@ MsgDelegate.prototype.GetMsg = function(){
 };
 
 MsgDelegate.prototype.GetDisplayContent = function (){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress);
     return {
         i18n_tx_type:"i18n_delegate",
         i18n_delegator_addr:delegatorAddress,
@@ -50,8 +50,8 @@ MsgDelegate.prototype.GetDisplayContent = function (){
 };
 
 MsgDelegate.prototype.toJSON = function(){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress);
 
     return {
         DelegatorAddress: delegatorAddress,
@@ -61,11 +61,11 @@ MsgDelegate.prototype.toJSON = function(){
 };
 
 
-MsgUndelegate.prototype.type = Config.cosmos.tx.undelegate.prefix;
+MsgUndelegate.prototype.type = Config.regen.tx.undelegate.prefix;
 MsgUndelegate.prototype.GetSignBytes = function () {
     let msg = {
-        delegator_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress),
-        validator_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress),
+        delegator_address: BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress),
+        validator_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress),
         amount: this.Amount
     };
     let sortMsg = Utils.sortObjectKeys(msg);
@@ -93,8 +93,8 @@ MsgUndelegate.prototype.GetMsg = function(){
 };
 
 MsgUndelegate.prototype.GetDisplayContent = function (){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress);
     return {
         i18n_tx_type:"i18n_begin_unbonding",
         i18n_delegator_addr:delegatorAddress,
@@ -104,8 +104,8 @@ MsgUndelegate.prototype.GetDisplayContent = function (){
 };
 
 MsgUndelegate.prototype.toJSON = function(){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress);
 
     return {
         DelegatorAddress: delegatorAddress,
@@ -115,12 +115,12 @@ MsgUndelegate.prototype.toJSON = function(){
 };
 
 
-MsgBeginRedelegate.prototype.type = Config.cosmos.tx.beginRedelegate.prefix;
+MsgBeginRedelegate.prototype.type = Config.regen.tx.beginRedelegate.prefix;
 MsgBeginRedelegate.prototype.GetSignBytes = function () {
     let msg = {
-        delegator_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress),
-        validator_src_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorSrcAddress),
-        validator_dst_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorDstAddress),
+        delegator_address: BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress),
+        validator_src_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorSrcAddress),
+        validator_dst_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorDstAddress),
         amount: this.Amount
     };
     let sortMsg = Utils.sortObjectKeys(msg);
@@ -156,9 +156,9 @@ MsgBeginRedelegate.prototype.GetMsg = function(){
 };
 
 MsgBeginRedelegate.prototype.GetDisplayContent = function (){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorSrcAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorSrcAddress);
-    let validatorDstAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorDstAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorSrcAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorSrcAddress);
+    let validatorDstAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorDstAddress);
 
     return {
         i18n_tx_type:"i18n_redelegate",
@@ -170,9 +170,9 @@ MsgBeginRedelegate.prototype.GetDisplayContent = function (){
 };
 
 MsgBeginRedelegate.prototype.toJSON = function(){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorSrcAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorSrcAddress);
-    let validatorDstAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorDstAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorSrcAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorSrcAddress);
+    let validatorDstAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorDstAddress);
 
     return {
         DelegatorAddress: delegatorAddress,

@@ -53,7 +53,7 @@ class TxSerializer {
 
 
         //stdTx amion编码前缀[auth/StdTx]
-        let txPreBuf = Buffer.from(amino.GetRegisterInfo(config.cosmos.tx.stdTx.prefix).prefix);
+        let txPreBuf = Buffer.from(amino.GetRegisterInfo(Config.regen.tx.stdTx.prefix).prefix);
         let msgPreBuf = Buffer.from(info.prefix);
 
         let buf = Buffer.from("");

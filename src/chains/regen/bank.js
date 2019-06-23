@@ -10,8 +10,8 @@ const MsgSend = Root.cosmos.MsgSend;
 MsgSend.prototype.GetSignBytes = function () {
 
     let msg = {
-        "from_address": BECH32.encode(Config.cosmos.bech32.accAddr,this.FromAddress),
-        "to_address": BECH32.encode(Config.cosmos.bech32.accAddr,this.ToAddress),
+        "from_address": BECH32.encode(Config.regen.bech32.accAddr,this.FromAddress),
+        "to_address": BECH32.encode(Config.regen.bech32.accAddr,this.ToAddress),
         "amount": this.Amount
     };
     let sortMsg = Utils.sortObjectKeys(msg);
@@ -39,10 +39,10 @@ MsgSend.prototype.GetMsg = function(){
     }
 };
 
-MsgSend.prototype.type = Config.cosmos.tx.transfer.prefix;
+MsgSend.prototype.type = Config.regen.tx.transfer.prefix;
 MsgSend.prototype.GetDisplayContent = function (){
-    let from = BECH32.encode(Config.cosmos.bech32.accAddr,this.FromAddress);
-    let to = BECH32.encode(Config.cosmos.bech32.accAddr,this.ToAddress);
+    let from = BECH32.encode(Config.regen.bech32.accAddr,this.FromAddress);
+    let to = BECH32.encode(Config.regen.bech32.accAddr,this.ToAddress);
     return {
         i18n_tx_type:"i18n_transfer",
         i18n_from:from,
@@ -52,8 +52,8 @@ MsgSend.prototype.GetDisplayContent = function (){
 };
 
 MsgSend.prototype.toJSON = function(){
-    let from = BECH32.encode(Config.cosmos.bech32.accAddr,this.FromAddress);
-    let to = BECH32.encode(Config.cosmos.bech32.accAddr,this.ToAddress);
+    let from = BECH32.encode(Config.regen.bech32.accAddr,this.FromAddress);
+    let to = BECH32.encode(Config.regen.bech32.accAddr,this.ToAddress);
     return {
         FromAddress: from,
         ToAddress: to,

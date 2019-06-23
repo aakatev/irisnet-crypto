@@ -62,20 +62,20 @@ class CosmosCrypto extends Crypto {
     getAddress(publicKey) {
         let pubKey = Codec.Hex.hexToBytes(publicKey);
         let address = CosmosKeypair.getAddress(pubKey);
-        address = Codec.Bech32.toBech32(Config.cosmos.bech32.accAddr, address);
+        address = Codec.Bech32.toBech32(Config.regen.bech32.accAddr, address);
         return address;
     }
 }
 
 function encode(acc){
     if(!Utils.isEmpty(acc)){
-        switch (Config.cosmos.defaultCoding){
-            case Config.cosmos.coding.bech32:{
+        switch (Config.regen.defaultCoding){
+            case Config.regen.coding.bech32:{
                 if (Codec.Hex.isHex(acc.address)){
-                    acc.address =  Codec.Bech32.toBech32(Config.cosmos.bech32.accAddr, acc.address);
+                    acc.address =  Codec.Bech32.toBech32(Config.regen.bech32.accAddr, acc.address);
                 }
                 if (Codec.Hex.isHex(acc.publicKey)){
-                    acc.publicKey = Codec.Bech32.toBech32(Config.cosmos.bech32.accPub, acc.publicKey);
+                    acc.publicKey = Codec.Bech32.toBech32(Config.regen.bech32.accPub, acc.publicKey);
                 }
             }
         }

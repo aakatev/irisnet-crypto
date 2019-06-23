@@ -84,7 +84,7 @@ class StdTx {
     }
 
     SetPubKey(pubkey){
-        if (Codec.Bech32.isBech32(Config.cosmos.bech32.accPub,pubkey)){
+        if (Codec.Bech32.isBech32(Config.regen.bech32.accPub,pubkey)){
             pubkey = Codec.Bech32.fromBech32(pubkey);
         }
         pubkey = Codec.Hex.hexToBytes(pubkey);
@@ -116,7 +116,7 @@ class StdTx {
                 }
 
                 signatures.push({
-                    pub_key: Amino.MarshalJSON(Config.cosmos.amino.pubKey, publicKey),
+                    pub_key: Amino.MarshalJSON(Config.regen.amino.pubKey, publicKey),
                     signature: signature,
                 })
             });
