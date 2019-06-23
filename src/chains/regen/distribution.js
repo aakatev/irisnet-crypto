@@ -7,11 +7,11 @@ const MsgSetWithdrawAddress = Root.cosmos.MsgSetWithdrawAddress;
 const MsgWithdrawDelegatorReward = Root.cosmos.MsgWithdrawDelegatorReward;
 const MsgWithdrawValidatorCommission = Root.cosmos.MsgWithdrawValidatorCommission;
 
-MsgSetWithdrawAddress.prototype.type = Config.cosmos.tx.setWithdrawAddress.prefix;
+MsgSetWithdrawAddress.prototype.type = Config.regen.tx.setWithdrawAddress.prefix;
 MsgSetWithdrawAddress.prototype.GetSignBytes = function () {
     let msg = {
-        delegator_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress),
-        withdraw_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.WithdrawAddress),
+        delegator_address: BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress),
+        withdraw_address: BECH32.encode(Config.regen.bech32.accAddr,this.WithdrawAddress),
     };
     let sortMsg = Utils.sortObjectKeys(msg);
     return Amino.MarshalJSON(this.type, sortMsg)
@@ -37,8 +37,8 @@ MsgSetWithdrawAddress.prototype.GetMsg = function(){
 };
 
 MsgSetWithdrawAddress.prototype.toJSON = function(){
-    let delegator_addr = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let withdraw_addr = BECH32.encode(Config.cosmos.bech32.accAddr,this.WithdrawAddress);
+    let delegator_addr = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let withdraw_addr = BECH32.encode(Config.regen.bech32.accAddr,this.WithdrawAddress);
     return {
         DelegatorAddress: delegator_addr,
         WithdrawAddress: withdraw_addr,
@@ -47,19 +47,19 @@ MsgSetWithdrawAddress.prototype.toJSON = function(){
 
 MsgSetWithdrawAddress.prototype.GetDisplayContent = function (){};
 
-MsgWithdrawDelegatorReward.prototype.type = Config.cosmos.tx.withdrawDelegatorReward.prefix;
+MsgWithdrawDelegatorReward.prototype.type = Config.regen.tx.withdrawDelegatorReward.prefix;
 MsgWithdrawDelegatorReward.prototype.GetSignBytes = function () {
     let msg = {
-        delegator_address: BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress),
-        validator_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress),
+        delegator_address: BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress),
+        validator_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress),
     };
     let sortMsg = Utils.sortObjectKeys(msg);
     return Amino.MarshalJSON(this.type, sortMsg)
 };
 
 MsgWithdrawDelegatorReward.prototype.toJSON = function(){
-    let delegatorAddr = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.ValidatorAddress);
+    let delegatorAddr = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.ValidatorAddress);
     return {
         DelegatorAddress: delegatorAddr,
         ValidatorAddress: validatorAddress,
@@ -85,8 +85,8 @@ MsgWithdrawDelegatorReward.prototype.GetMsg = function(){
     }
 };
 MsgWithdrawDelegatorReward.prototype.GetDisplayContent = function (){
-    let delegatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.DelegatorAddress);
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress);
+    let delegatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.DelegatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress);
 
     return {
         i18n_tx_type:"i18n_withdraw_delegation_reward",
@@ -96,10 +96,10 @@ MsgWithdrawDelegatorReward.prototype.GetDisplayContent = function (){
 };
 
 
-MsgWithdrawValidatorCommission.prototype.type = Config.cosmos.tx.withdrawValidatorCommission.prefix;
+MsgWithdrawValidatorCommission.prototype.type = Config.regen.tx.withdrawValidatorCommission.prefix;
 MsgWithdrawValidatorCommission.prototype.GetSignBytes = function () {
     let msg = {
-        validator_address: BECH32.encode(Config.cosmos.bech32.valAddr,this.ValidatorAddress),
+        validator_address: BECH32.encode(Config.regen.bech32.valAddr,this.ValidatorAddress),
     };
     let sortMsg = Utils.sortObjectKeys(msg);
     return Amino.MarshalJSON(this.type, sortMsg)
@@ -120,7 +120,7 @@ MsgWithdrawValidatorCommission.prototype.GetMsg = function(){
 };
 MsgWithdrawValidatorCommission.prototype.GetDisplayContent = function (){};
 MsgWithdrawValidatorCommission.prototype.toJSON = function(){
-    let validatorAddress = BECH32.encode(Config.cosmos.bech32.accAddr,this.ValidatorAddress);
+    let validatorAddress = BECH32.encode(Config.regen.bech32.accAddr,this.ValidatorAddress);
     return {
         ValidatorAddress: validatorAddress,
     }

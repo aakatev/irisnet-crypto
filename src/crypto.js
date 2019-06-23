@@ -100,6 +100,9 @@ class Crypto {
             case Config.chain.cosmos: {
                 return require('./chains/cosmos/crypto')();
             }
+            case Config.chain.regen: {
+                return require('./chains/regen/crypto')();
+            }
             default: {
                 throw new Error("not correct chain");
             }
